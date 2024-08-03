@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="Inventory" load_steps=16 format=3 uid="uid://bq0ve57ib3vnm"]
+
+[ext_resource type="Script" path="res://Inventory/inventorySlot.gd" id="2_d5yon"]
+[ext_resource type="Resource" uid="uid://dejb042mjmtcp" path="res://Inventory/items/redCables.tres" id="2_l1bsi"]
+[ext_resource type="Script" path="res://Inventory/inventory.gd" id="2_scp7t"]
+
+[sub_resource type="Resource" id="Resource_bkcgd"]
+script = ExtResource("2_d5yon")
+item = ExtResource("2_l1bsi")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_ug2x7"]
+script = ExtResource("2_d5yon")
+item = ExtResource("2_l1bsi")
+amount = 1
+
+[sub_resource type="Resource" id="Resource_loufc"]
+script = ExtResource("2_d5yon")
+item = ExtResource("2_l1bsi")
+amount = 2
+
+[sub_resource type="Resource" id="Resource_vylbc"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_3xurk"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_f281m"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_unl46"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_4dsk3"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_qymnf"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_om4q4"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_2wmvs"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_svbf1"]
+script = ExtResource("2_d5yon")
+amount = 0
+
+[resource]
+script = ExtResource("2_scp7t")
+slots = Array[ExtResource("2_d5yon")]([SubResource("Resource_bkcgd"), SubResource("Resource_ug2x7"), SubResource("Resource_loufc"), SubResource("Resource_vylbc"), SubResource("Resource_3xurk"), SubResource("Resource_f281m"), SubResource("Resource_unl46"), SubResource("Resource_4dsk3"), SubResource("Resource_qymnf"), SubResource("Resource_om4q4"), SubResource("Resource_2wmvs"), SubResource("Resource_svbf1")])
