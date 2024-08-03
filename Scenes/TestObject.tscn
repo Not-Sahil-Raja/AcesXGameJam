@@ -1,0 +1,29 @@
+[gd_scene load_steps=7 format=3 uid="uid://cygs1o8qx5ftk"]
+
+[ext_resource type="Texture2D" uid="uid://nfdv7f10ibf1" path="res://Assets/SpaceCraft_Debri..png" id="1_3lvyq"]
+[ext_resource type="Script" path="res://Scripts/TestObject.gd" id="1_6gbvr"]
+[ext_resource type="Resource" uid="uid://dejb042mjmtcp" path="res://Inventory/items/redCables.tres" id="2_m53jv"]
+[ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="2_wkdis"]
+[ext_resource type="Resource" uid="uid://bq0ve57ib3vnm" path="res://Inventory/playerInventory.tres" id="3_c0v04"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
+size = Vector2(150.75, 87.25)
+
+[node name="TestObject" type="Node2D"]
+script = ExtResource("1_6gbvr")
+itemRes = ExtResource("2_m53jv")
+inventory = ExtResource("3_c0v04")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -15)
+scale = Vector2(2.25, 2.25)
+texture = ExtResource("1_3lvyq")
+
+[node name="InteractionScene" parent="." instance=ExtResource("2_wkdis")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionScene"]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_hkxl7")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="Sprite2D" to="." method="_on_sprite_2d_ready"]

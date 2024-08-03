@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdab2p8loi5fq"]
+
+[ext_resource type="Script" path="res://Inventory/ItemStackGui.gd" id="1_ed230"]
+[ext_resource type="Texture2D" uid="uid://cwc4pra8lelfi" path="res://Assets/Red_Wire.png" id="2_blw2h"]
+[ext_resource type="FontFile" uid="uid://7f31858l617j" path="res://Pixel_fonts/BitCasual.ttf" id="2_g16lc"]
+
+[node name="Panel" type="Panel"]
+script = ExtResource("1_ed230")
+
+[node name="item" type="Sprite2D" parent="."]
+texture = ExtResource("2_blw2h")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 15.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("2_g16lc")
+text = "99"
+horizontal_alignment = 2

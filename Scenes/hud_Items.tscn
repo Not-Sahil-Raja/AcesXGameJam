@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxu52wxbotoyg"]
+
+[ext_resource type="Script" path="res://Scripts/hud_Items.gd" id="1_6g43k"]
+[ext_resource type="FontFile" uid="uid://bx5g4uykjxytc" path="res://Pixel_fonts/MonstaMono.ttf" id="1_cb1b8"]
+
+[node name="HudItems" type="CanvasLayer"]
+script = ExtResource("1_6g43k")
+
+[node name="Full_Screen_Control" type="Control" parent="."]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="Timer" type="Timer" parent="Full_Screen_Control"]
+
+[node name="HungerBar" type="ProgressBar" parent="Full_Screen_Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -171.5
+offset_right = 232.0
+offset_bottom = -153.5
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_cb1b8")
+value = 100.0
+
+[node name="Control" type="Control" parent="Full_Screen_Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 35.0
+grow_horizontal = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Full_Screen_Control/Control"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[connection signal="timeout" from="Full_Screen_Control/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Full_Screen_Control/Timer" to="Full_Screen_Control" method="_on_timer_timeout"]
