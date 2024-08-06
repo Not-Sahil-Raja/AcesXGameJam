@@ -419,6 +419,5 @@ color = Color(0.07, 0.07, 0.07, 1)
 energy = 0.56
 blend_mode = 2
 range_layer_min = -200
-range_layer_max = 200
 shadow_enabled = true
 height = 0.23

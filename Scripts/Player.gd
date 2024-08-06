@@ -1,12 +1,18 @@
+class_name Player
 extends CharacterBody2D
 
-class_name Player
-
+@onready var camera_2d = $Camera2D
 @onready var muzzle = $Muzzle
 @onready var anim_Sprite = $AnimatedSprite2D
 @onready var player_torch_light = $Player_Torch_light
-@export var Bullet : PackedScene
 
+@export var Bullet : PackedScene
+@export var CameraLimits :Dictionary={
+	"left" : -1317,
+	"right": 513,
+	"top": -100000,
+	"bottom":103
+}
 @export var speed:float =90.0
 
 var movement_active:bool = true
@@ -21,12 +27,19 @@ var muzzle_position
 @export var inventory:Inventory
 
 func _ready():
-	HudItems.visible_hunger_bar()
+	camera_2d.limit_left = CameraLimits["left"]
+	camera_2d.limit_right = CameraLimits["right"]
+	camera_2d.limit_top = CameraLimits["top"]
+	camera_2d.limit_bottom = CameraLimits["bottom"]
+	
+	HudItems.visible_bar()
 	HudItems.start_timer()
 	muzzle_position= muzzle.position
 	pass
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("refil"):
+		HudItems.oxygen_refill()
 	
 	if movement_active:
 		
@@ -120,6 +133,7 @@ func enable_move():
 
 func shoot()->void:
 	var bullet_instance = Bullet.instantiate() as Node2D
+	
 	bullet_instance.direction = direction
 	bullet_instance.global_position = muzzle.global_position
 	get_parent().add_child(bullet_instance)
@@ -127,5 +141,6 @@ func shoot()->void:
 func player_muzzle_position():
 	if direction > 0:
 		muzzle.position.x = muzzle_position.x
+		
 	elif direction < 0:
 		muzzle.position.x = -muzzle_position.x

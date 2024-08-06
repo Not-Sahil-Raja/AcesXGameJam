@@ -593,9 +593,6 @@ shape = SubResource("RectangleShape2D_tjtle")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -77)
-limit_left = -1317
-limit_right = 513
-limit_bottom = 103
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 

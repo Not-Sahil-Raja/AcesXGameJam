@@ -1,9 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxu52wxbotoyg"]
+[gd_scene load_steps=14 format=3 uid="uid://bxu52wxbotoyg"]
 
 [ext_resource type="Script" path="res://Scripts/hud_Items.gd" id="1_6g43k"]
-[ext_resource type="FontFile" uid="uid://bx5g4uykjxytc" path="res://Pixel_fonts/MonstaMono.ttf" id="1_cb1b8"]
+[ext_resource type="Texture2D" uid="uid://cwouxy1nlew76" path="res://Assets/Bars/Bars_Bg.png" id="2_ixjxs"]
+[ext_resource type="Texture2D" uid="uid://c5r1uysmidp7i" path="res://Assets/Bars/All_Bar_Icons.png" id="3_5yhw8"]
+[ext_resource type="Texture2D" uid="uid://drw0xpch5mk6p" path="res://Assets/Bars/Oxygen/Behind_OxygenBar.png" id="3_odvaj"]
+[ext_resource type="Texture2D" uid="uid://d4k1honr8x72n" path="res://Assets/Bars/Oxygen/Over_OxygenBar.png" id="4_7d1cv"]
+[ext_resource type="Texture2D" uid="uid://bwoxsxkdj535j" path="res://Assets/Bars/Health/Behind_HealthBar.png" id="4_ftd2l"]
+[ext_resource type="Texture2D" uid="uid://bnmwf6fut6igh" path="res://Assets/Bars/Oxygen/Progress_OxygenBar.png" id="5_oeii6"]
+[ext_resource type="Texture2D" uid="uid://bn1aj6rlre2tv" path="res://Assets/Bars/Health/Over_HealthBar.png" id="5_taiux"]
+[ext_resource type="Texture2D" uid="uid://c767ofp7pjsif" path="res://Assets/Bars/Health/Progress_HealthBar.png" id="6_co14o"]
+[ext_resource type="Texture2D" uid="uid://ls0426aagydn" path="res://Assets/Bars/Hunger/Behind_HungerBar.png" id="10_d2fgt"]
+[ext_resource type="Texture2D" uid="uid://d04asxa7jfljo" path="res://Assets/Bars/Hunger/Over_HungerBar.png" id="11_syvwk"]
+[ext_resource type="Texture2D" uid="uid://cgb7veancwltg" path="res://Assets/Bars/Hunger/Progress_HungerBar.png" id="12_2kwff"]
+[ext_resource type="Texture2D" uid="uid://bskukkcxkfhki" path="res://Assets/Bars/Hud_Char_Frame.png" id="13_podxk"]
 
 [node name="HudItems" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_6g43k")
 
 [node name="Full_Screen_Control" type="Control" parent="."]
@@ -13,34 +25,68 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
-[node name="Timer" type="Timer" parent="Full_Screen_Control"]
-
-[node name="HungerBar" type="ProgressBar" parent="Full_Screen_Control"]
-visible = false
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -171.5
-offset_right = 232.0
-offset_bottom = -153.5
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_cb1b8")
-value = 100.0
-
-[node name="Control" type="Control" parent="Full_Screen_Control"]
-visible = false
+[node name="Top_Control" type="Control" parent="Full_Screen_Control"]
+custom_minimum_size = Vector2(0, 62)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 35.0
 grow_horizontal = 2
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Full_Screen_Control/Control"]
+[node name="BarsTimer" type="Timer" parent="Full_Screen_Control/Top_Control"]
+
+[node name="Bars_hud" type="TextureRect" parent="Full_Screen_Control/Top_Control"]
 visible = false
+layout_mode = 0
+offset_left = 11.0
+offset_top = 8.0
+offset_right = 217.0
+offset_bottom = 53.0
+texture = ExtResource("2_ixjxs")
+
+[node name="IconTexture" type="TextureRect" parent="Full_Screen_Control/Top_Control/Bars_hud"]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 45.0
+texture = ExtResource("3_5yhw8")
+
+[node name="HealthBar" type="TextureProgressBar" parent="Full_Screen_Control/Top_Control/Bars_hud"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+value = 95.0
+texture_under = ExtResource("4_ftd2l")
+texture_over = ExtResource("5_taiux")
+texture_progress = ExtResource("6_co14o")
 
-[connection signal="timeout" from="Full_Screen_Control/Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Full_Screen_Control/Timer" to="Full_Screen_Control" method="_on_timer_timeout"]
+[node name="OxygenBar" type="TextureProgressBar" parent="Full_Screen_Control/Top_Control/Bars_hud"]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 45.0
+min_value = 29.0
+max_value = 111.5
+step = 0.5
+value = 103.5
+texture_under = ExtResource("3_odvaj")
+texture_over = ExtResource("4_7d1cv")
+texture_progress = ExtResource("5_oeii6")
+
+[node name="HungerBar" type="TextureProgressBar" parent="Full_Screen_Control/Top_Control/Bars_hud"]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 45.0
+max_value = 86.5
+step = 0.5
+value = 75.0
+nine_patch_stretch = true
+texture_under = ExtResource("10_d2fgt")
+texture_over = ExtResource("11_syvwk")
+texture_progress = ExtResource("12_2kwff")
+
+[node name="CharFrame" type="TextureRect" parent="Full_Screen_Control/Top_Control/Bars_hud"]
+layout_mode = 0
+offset_right = 206.0
+offset_bottom = 45.0
+texture = ExtResource("13_podxk")
+
+[connection signal="timeout" from="Full_Screen_Control/Top_Control/BarsTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Full_Screen_Control/Top_Control/BarsTimer" to="Full_Screen_Control" method="_on_timer_timeout"]

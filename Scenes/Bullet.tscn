@@ -1,26 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxc501oh1ml12"]
+[gd_scene load_steps=4 format=3 uid="uid://cxc501oh1ml12"]
 
 [ext_resource type="Script" path="res://Scripts/Bullet.gd" id="1_6ypnj"]
-
-[sub_resource type="Gradient" id="Gradient_nh15d"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rg0ih"]
-gradient = SubResource("Gradient_nh15d")
-width = 1
+[ext_resource type="Texture2D" uid="uid://3nq7fklrqegs" path="res://Assets/bullet.png" id="2_fjc52"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyvin"]
-size = Vector2(49, 5)
+size = Vector2(15, 4)
 
 [node name="Bullet" type="Area2D"]
 script = ExtResource("1_6ypnj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, -0.375)
-scale = Vector2(49, 4.75)
-texture = SubResource("GradientTexture1D_rg0ih")
+position = Vector2(2.38419e-07, 0)
+rotation = 3.14159
+scale = Vector2(0.0452428, 0.0426878)
+texture = ExtResource("2_fjc52")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -0.5)
+position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_oyvin")
 
 [node name="Timer" type="Timer" parent="."]
