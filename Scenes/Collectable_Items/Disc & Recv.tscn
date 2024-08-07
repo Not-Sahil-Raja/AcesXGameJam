@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://7wf0uxlyonle"]
+
+[ext_resource type="Script" path="res://Scripts/InteractableItem/RadarParts.gd" id="1_byko5"]
+[ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="2_31oyf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
+size = Vector2(78, 37)
+
+[node name="Disc & Recv" type="Node2D"]
+script = ExtResource("1_byko5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.446777, 0.446777, 0.446777, 1)
+position = Vector2(43, 10)
+scale = Vector2(0.5, 0.5)
+
+[node name="InteractionScene" parent="." instance=ExtResource("2_31oyf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionScene"]
+position = Vector2(1, -5.5)
+shape = SubResource("RectangleShape2D_hkxl7")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="Sprite2D" to="." method="_on_sprite_2d_ready"]

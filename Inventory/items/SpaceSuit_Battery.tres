@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b2se5gihahfi3"]
+
+[ext_resource type="Script" path="res://Inventory/inventoryItem.gd" id="1_hmx0f"]
+[ext_resource type="Texture2D" uid="uid://bi4vrj8l2y6d1" path="res://Assets/SpriteLogos/batttery.png" id="2_j3702"]
+
+[resource]
+script = ExtResource("1_hmx0f")
+name = "Battery"
+texture = ExtResource("2_j3702")
+maxAmountPerStack = 2

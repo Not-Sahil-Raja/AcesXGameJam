@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdd57ojwsqgsr"]
+
+[ext_resource type="Script" path="res://Scripts/InteractableItem/Rover_Broken.gd" id="1_k25dk"]
+[ext_resource type="Texture2D" uid="uid://8s6l54xtntkc" path="res://Char/Broken_Robo.png" id="2_161xo"]
+[ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="3_jq4mu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
+size = Vector2(120, 54)
+
+[node name="Rover_Broken" type="Node2D"]
+script = ExtResource("1_k25dk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.623347, 0.553691, 0.513704, 1)
+position = Vector2(1, -14)
+rotation = 1.10458
+texture = ExtResource("2_161xo")
+
+[node name="InteractionScene" parent="." instance=ExtResource("3_jq4mu")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionScene"]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_hkxl7")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="Sprite2D" to="." method="_on_sprite_2d_ready"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://bftmf6vfrp1fj"]
 
-[ext_resource type="PackedScene" uid="uid://cygs1o8qx5ftk" path="res://Scenes/TestObject.tscn" id="1_1bj5p"]
+[ext_resource type="PackedScene" uid="uid://cygs1o8qx5ftk" path="res://Scenes/Collectable_Items/Battery_For_SpaceSuit.tscn" id="1_1bj5p"]
 [ext_resource type="Script" path="res://Scripts/game_root.gd" id="1_ybdhp"]
 [ext_resource type="PackedScene" uid="uid://ctj3rp1iwc16h" path="res://Scenes/collectable.tscn" id="2_hogd8"]
-[ext_resource type="PackedScene" uid="uid://cxs1rbrsfamk6" path="res://Scenes/StartScreen.tscn" id="2_xjesw"]
+[ext_resource type="PackedScene" uid="uid://cxs1rbrsfamk6" path="res://Scenes/Levels/StartScreen.tscn" id="2_xjesw"]
 
 [node name="Game_Root" type="Node2D"]
 script = ExtResource("1_ybdhp")

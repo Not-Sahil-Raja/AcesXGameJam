@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu6qswdgo8bvd"]
+
+[ext_resource type="Script" path="res://Scripts/InteractableItem/Satallite.gd" id="1_jq5by"]
+[ext_resource type="Texture2D" uid="uid://blqy0qybso6sb" path="res://Assets/SpriteLogos/SatelliteItems/Stallite_Broken.png" id="2_ftfl4"]
+[ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="2_nnt8r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
+size = Vector2(159, 54)
+
+[node name="Satallite" type="Node2D"]
+script = ExtResource("1_jq5by")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.623347, 0.553691, 0.513704, 1)
+position = Vector2(2, 22)
+texture = ExtResource("2_ftfl4")
+
+[node name="InteractionScene" parent="." instance=ExtResource("2_nnt8r")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionScene"]
+position = Vector2(-14.5, -11)
+shape = SubResource("RectangleShape2D_hkxl7")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="Sprite2D" to="." method="_on_sprite_2d_ready"]

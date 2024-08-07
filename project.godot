@@ -31,6 +31,10 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Assets/SpriteLogos/": "purple",
+"res://Inventory/items/": "teal",
+"res://Scenes/Collectable_Items/": "yellow",
+"res://Scenes/InteractableItems/": "pink",
 "res://Scenes/Levels/": "teal"
 }
 
