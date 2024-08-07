@@ -21,11 +21,15 @@ func takeItem():
 	var item= itemStackGui
 	inventory.removeSlot(itemStackGui.inventorySlot)
 	
-	center_container.remove_child(itemStackGui)
-	itemStackGui=null
-	backgroundSprite.frame=0
+	
 	
 	return item
 	
 func isEmpty():
 	return !itemStackGui
+	
+func clear():
+	if itemStackGui:
+		center_container.remove_child(itemStackGui)
+		itemStackGui=null
+	backgroundSprite.frame=0

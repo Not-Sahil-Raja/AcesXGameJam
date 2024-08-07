@@ -6,7 +6,8 @@ signal closed
 var is_inventory_opened:bool= false
 
 @onready var inventory : Inventory = preload("res://Inventory/playerInventory.tres") 
-@onready var slots:Array = $TextureRect/GridContainer.get_children()
+@onready var hotbar_slots:Array = $TextureRect/HBoxContainer.get_children()
+@onready var slots:Array = hotbar_slots + $TextureRect/GridContainer.get_children()
 @onready var ItemStackGuiCLass=preload("res://Inventory/ItemStackGui.tscn")
 
 
@@ -31,7 +32,9 @@ func update():
 	for i in range(min(inventory.slots.size(),slots.size())):
 		var inventorySlot:InventorySlot = inventory.slots[i]
 		
-		if !inventorySlot.item:continue
+		if !inventorySlot.item:
+			slots[i].clear()
+			continue
 		
 		var itemStackGui:ItemStackGui= slots[i].itemStackGui
 		
