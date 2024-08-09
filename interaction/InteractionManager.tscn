@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl5rw15swkqk0"]
 
 [ext_resource type="Script" path="res://Scripts/InteractionManager.gd" id="1_hqrxi"]
-[ext_resource type="FontFile" uid="uid://7f31858l617j" path="res://Pixel_fonts/BitCasual.ttf" id="2_ehpfr"]
+[ext_resource type="FontFile" uid="uid://cnaury175fy8e" path="res://Pixel_fonts/Beanstalk.ttf" id="2_ssuu5"]
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_hqrxi")
@@ -15,7 +15,9 @@ offset_left = -54.0
 offset_right = 54.0
 offset_bottom = 23.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_ehpfr")
-text = "[E] To Interact"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_ssuu5")
+text = "[ E ] To Interact"
 horizontal_alignment = 1
 vertical_alignment = 1

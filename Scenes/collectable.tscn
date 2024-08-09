@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctj3rp1iwc16h"]
 
 [ext_resource type="Script" path="res://Scripts/collectable.gd" id="1_rk8b1"]
-[ext_resource type="Resource" uid="uid://dejb042mjmtcp" path="res://Inventory/items/redCables.tres" id="2_1acco"]
+[ext_resource type="Resource" uid="uid://dejb042mjmtcp" path="res://Inventory/items/BioGel_Pack.tres" id="2_1acco"]
 [ext_resource type="Texture2D" uid="uid://cwc4pra8lelfi" path="res://Assets/Red_Wire.png" id="3_4mbyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vef6x"]

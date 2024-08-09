@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://b2se5gihahfi3"]
+
+[ext_resource type="Script" path="res://Inventory/inventoryItem.gd" id="1_ibdwa"]
+[ext_resource type="Texture2D" uid="uid://nffdaibmm0xd" path="res://Assets/SpriteLogos/OxygenItem.png" id="2_nlxhi"]
+
+[resource]
+script = ExtResource("1_ibdwa")
+name = "OxgenReplenismentPack"
+texture = ExtResource("2_nlxhi")
+maxAmountPerStack = 2
+Type = "o2"
+value = 10

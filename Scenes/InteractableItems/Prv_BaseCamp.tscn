@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx5n2hs1nbps4"]
+
+[ext_resource type="Script" path="res://Scripts/InteractableItem/PrvBaseCamp.gd" id="1_itgvs"]
+[ext_resource type="Texture2D" uid="uid://lxh6x44ux7ae" path="res://Assets/PreviousBase/Previous Base.png" id="2_uv6ww"]
+[ext_resource type="Texture2D" uid="uid://cjmsy2e4142gk" path="res://Assets/GroundBlend/Ground_Blends_1.png" id="3_31yde"]
+[ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="3_ff27f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
+size = Vector2(343, 110.25)
+
+[node name="PrvBaseCamp" type="Node2D"]
+script = ExtResource("1_itgvs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.800494, 0.744304, 0.734222, 1)
+position = Vector2(-177, -214)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_uv6ww")
+
+[node name="GroundBlend" type="Sprite2D" parent="."]
+position = Vector2(40.5, -22.5)
+scale = Vector2(2.045, 1.59)
+texture = ExtResource("3_31yde")
+
+[node name="InteractionScene" parent="." instance=ExtResource("3_ff27f")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionScene"]
+position = Vector2(57.5, -51.125)
+shape = SubResource("RectangleShape2D_hkxl7")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="Sprite2D" to="." method="_on_sprite_2d_ready"]

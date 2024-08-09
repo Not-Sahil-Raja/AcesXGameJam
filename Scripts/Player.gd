@@ -5,7 +5,10 @@ extends CharacterBody2D
 @onready var muzzle = $Muzzle
 @onready var anim_Sprite = $AnimatedSprite2D
 @onready var player_torch_light = $Player_Torch_light
+@onready var ui_elements = $UIElements
+@onready var ui_anim_player = $Ui_anim_player
 
+@export var CAMERA_ZOOM:Vector2 = Vector2( 1.0, 1.0)
 @export var Bullet : PackedScene
 @export var CameraLimits :Dictionary={
 	"left" : -1317,
@@ -14,23 +17,28 @@ extends CharacterBody2D
 	"bottom":103
 }
 @export var speed:float =90.0
+@export var inventory:Inventory
+@export var Torch : bool
+@export var _can_Shoot:bool
 
 var movement_active:bool = true
-
 var input_movement=Vector2.ZERO
 var is_moving:bool=false
 var dir:String="left"
 var is_sprinting: bool= false
 var direction:int = -1
 var muzzle_position
+var shooting:bool = false
 
-@export var inventory:Inventory
 
 func _ready():
+	player_torch_light.visible= !Torch
 	camera_2d.limit_left = CameraLimits["left"]
 	camera_2d.limit_right = CameraLimits["right"]
 	camera_2d.limit_top = CameraLimits["top"]
 	camera_2d.limit_bottom = CameraLimits["bottom"]
+	
+	camera_2d.zoom= CAMERA_ZOOM
 	
 	HudItems.visible_bar()
 	HudItems.start_timer()
@@ -42,9 +50,9 @@ func _physics_process(delta):
 		HudItems.oxygen_refill()
 	
 	if movement_active:
-		
-		if Input.is_action_just_pressed("Shoot"):
-			shoot()
+		if _can_Shoot:
+			if Input.is_action_just_pressed("Shoot"):
+				shoot()
 		
 		player_muzzle_position()
 		
@@ -95,11 +103,21 @@ func move():
 	if is_moving==true:
 		if dir=="left":
 			anim_Sprite.flip_h=true
-			anim_Sprite.play("LeftMove")
+			if shooting:
+				anim_Sprite.play("Shooting&Moving")
+				await anim_Sprite.animation_finished
+				shooting= false
+			else:
+				anim_Sprite.play("LeftMove")
 			player_torch_light.rotation_degrees= 140.0
 		elif dir=="right":
 			anim_Sprite.flip_h=false
-			anim_Sprite.play("LeftMove")
+			if shooting:
+				anim_Sprite.play("Shooting&Moving")
+				await anim_Sprite.animation_finished
+				shooting= false
+			else:
+				anim_Sprite.play("LeftMove")
 			player_torch_light.rotation_degrees= 40.0
 		elif dir=="up":
 			anim_Sprite.play("UpMove")
@@ -110,11 +128,21 @@ func move():
 	elif is_moving==false:
 		if dir=="left":
 			anim_Sprite.flip_h=true
-			anim_Sprite.play("Side_Idle")
+			if shooting:
+				anim_Sprite.play("Shooting")
+				await anim_Sprite.animation_finished
+				shooting= false
+			else:
+				anim_Sprite.play("Side_Idle")
 			
 		elif dir=="right":
 			anim_Sprite.flip_h=false
-			anim_Sprite.play("Side_Idle")
+			if shooting:
+				anim_Sprite.play("Shooting")
+				await anim_Sprite.animation_finished
+				shooting= false
+			else:
+				anim_Sprite.play("Side_Idle")
 		elif dir=="up":
 			anim_Sprite.play("Up_Idle")
 		elif dir== "down":
@@ -132,6 +160,7 @@ func enable_move():
 	movement_active = true
 
 func shoot()->void:
+	shooting=true
 	var bullet_instance = Bullet.instantiate() as Node2D
 	
 	bullet_instance.direction = direction
@@ -144,3 +173,14 @@ func player_muzzle_position():
 		
 	elif direction < 0:
 		muzzle.position.x = -muzzle_position.x
+
+func dead()->void:
+	
+	disable_move()
+	ui_elements.visible=true
+	ui_anim_player.play("Dead")
+	await ui_anim_player.animation_finished
+	HudItems.resetHud()
+	get_tree().reload_current_scene()
+
+

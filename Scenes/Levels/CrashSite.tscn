@@ -54,7 +54,7 @@ fill_to = Vector2(0.534188, 0)
 seed = 1
 frequency = 0.0046
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ixq8a"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_flvia"]
 width = 640
 height = 360
 seamless = true
@@ -65,7 +65,7 @@ noise = SubResource("FastNoiseLite_e4ery")
 shader = ExtResource("9_7fr4f")
 shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ixq8a")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_flvia")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ughfm"]
 atlas = ExtResource("24_ywnb3")
@@ -205,6 +205,7 @@ radius = 25.02
 script = ExtResource("1_stslg")
 
 [node name="Player" parent="." instance=ExtResource("1_3hn4h")]
+unique_name_in_owner = true
 position = Vector2(381, 5)
 CameraLimits = {
 "bottom": 103,
@@ -367,9 +368,9 @@ material = SubResource("ShaderMaterial_88cf5")
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(1, 0.784167, 0.63, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="Collision" type="StaticBody2D" parent="."]
-visible = false
 collision_mask = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collision"]
@@ -420,6 +421,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Objectives_panel" type="Panel" parent="UiItems/Control"]
+self_modulate = Color(1, 1, 1, 0.666667)
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 240.0
+offset_bottom = 110.0
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UiItems/Control/Objectives_panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+draw_center = false
+
+[node name="Objectives_container" type="VBoxContainer" parent="UiItems/Control/Objectives_panel/NinePatchRect"]
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 0
+offset_left = 8.0
+offset_right = 48.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Objective_text" type="Label" parent="UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container"]
+self_modulate = Color(0.79, 0.79, 0.79, 1)
+custom_minimum_size = Vector2(220, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_q5utd")
+text = "text"
+autowrap_mode = 2
+
+[node name="Objective_text2" type="Label" parent="UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container"]
+self_modulate = Color(0.79, 0.79, 0.79, 1)
+custom_minimum_size = Vector2(220, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("25_q5utd")
+theme_override_font_sizes/font_size = 16
+text = "text"
 
 [node name="ScanningCenterContainer" type="CenterContainer" parent="UiItems/Control"]
 visible = false
@@ -450,40 +493,6 @@ color = Color(0.101961, 0.101961, 0.101961, 0.662745)
 
 [node name="Screen_Timer" type="Timer" parent="UiItems/Control/ScanningCenterContainer"]
 wait_time = 4.0
-
-[node name="Objectives_panel" type="Panel" parent="UiItems/Control"]
-self_modulate = Color(1, 1, 1, 0.666667)
-layout_mode = 1
-offset_left = 20.0
-offset_top = 70.0
-offset_right = 240.0
-offset_bottom = 110.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="UiItems/Control/Objectives_panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-draw_center = false
-
-[node name="Objectives_container" type="VBoxContainer" parent="UiItems/Control/Objectives_panel/NinePatchRect"]
-layout_mode = 0
-offset_left = 8.0
-offset_right = 48.0
-offset_bottom = 40.0
-theme_override_constants/separation = 0
-alignment = 1
-
-[node name="Objective_text" type="Label" parent="UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container"]
-self_modulate = Color(0.79, 0.79, 0.79, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("25_q5utd")
-text = "text"
-
-[node name="Objective_text2" type="Label" parent="UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container"]
-self_modulate = Color(0.79, 0.79, 0.79, 1)
-layout_mode = 2
-theme_override_fonts/font = ExtResource("25_q5utd")
-text = "text"
 
 [node name="BlockRoad" type="StaticBody2D" parent="."]
 position = Vector2(-1655, 0)
@@ -542,7 +551,7 @@ shape = SubResource("CircleShape2D_y27a1")
 position = Vector2(-445, 18)
 
 [node name="Rover gascan" parent="." instance=ExtResource("30_84svs")]
-position = Vector2(-1293, 21)
+position = Vector2(-142, 17)
 rotation = 0.440842
 
 [node name="CaveDoor" parent="." instance=ExtResource("31_m1iqe")]

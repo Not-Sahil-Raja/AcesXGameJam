@@ -1,7 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://b0565rpqyi31f"]
+[gd_scene load_steps=27 format=3 uid="uid://b0565rpqyi31f"]
 
 [ext_resource type="PackedScene" uid="uid://cieef0acx3h8h" path="res://Scenes/Door.tscn" id="1_jguqi"]
-[ext_resource type="Script" path="res://Scripts/level.gd" id="1_l3s13"]
+[ext_resource type="Script" path="res://Scripts/Level/martian_cave_scene.gd" id="1_onb35"]
 [ext_resource type="PackedScene" uid="uid://v34kfwvlifqx" path="res://Scenes/player.tscn" id="1_wtd64"]
 [ext_resource type="Texture2D" uid="uid://cqenfcnt6rb82" path="res://Assets/Martian_ForeGround_Tilemap.png" id="2_d3g7s"]
 [ext_resource type="Script" path="res://Scripts/Main_Ui_Elements.gd" id="3_0ob87"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cygs1o8qx5ftk" path="res://Scenes/Collectable_Items/Battery_For_SpaceSuit.tscn" id="14_5br5h"]
 [ext_resource type="PackedScene" uid="uid://dqxyh73gal7c3" path="res://Scenes/Collectable_Items/WaterArea.tscn" id="15_y6tvc"]
 [ext_resource type="PackedScene" uid="uid://cyv0pgatkgmmp" path="res://Scenes/Collectable_Items/FoodBox.tscn" id="17_tu85l"]
+[ext_resource type="PackedScene" uid="uid://bnvi00rhjmka8" path="res://Scenes/InteractableItems/RoboHand.tscn" id="18_6ec78"]
+[ext_resource type="Shader" path="res://Scenes/Fog.gdshader" id="18_ihk3h"]
 
 [sub_resource type="Environment" id="Environment_c23pk"]
 background_mode = 3
@@ -359,16 +361,36 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_hk7kt")
 
-[node name="Martian_Cave_Scene" type="Node2D" node_paths=PackedStringArray("player")]
-script = ExtResource("1_l3s13")
-player = NodePath("Player")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_mejpb"]
+seed = 1
+frequency = 0.0046
 
-[node name="Door" parent="." instance=ExtResource("1_jguqi")]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ixq8a"]
+width = 640
+height = 360
+seamless = true
+seamless_blend_skirt = 0.75
+noise = SubResource("FastNoiseLite_mejpb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3o12v"]
+shader = ExtResource("18_ihk3h")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.02, 0.01)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ixq8a")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8v5bs"]
+size = Vector2(20, 92)
+
+[node name="Martian_Cave_Scene" type="Node2D"]
+script = ExtResource("1_onb35")
+
+[node name="Door_for_martian_Canyon" parent="." instance=ExtResource("1_jguqi")]
 z_index = 3
-position = Vector2(362, 84)
+position = Vector2(-1299, 64)
+scale = Vector2(1, 2.84)
 entry_direction = 1
 transition_type = "fade_to_black"
-path_to_new_scene = "res://Scenes/Levels/CrashSite.tscn"
+path_to_new_scene = "res://Scenes/Levels/Martian_canyon.tscn"
 entry_door_name = "WestDoor"
 
 [node name="Player" parent="." instance=ExtResource("1_wtd64")]
@@ -510,3 +532,30 @@ position = Vector2(-151, 78)
 
 [node name="FoodBox" parent="CollectableItems" instance=ExtResource("17_tu85l")]
 position = Vector2(-882, 81)
+
+[node name="Robohand" parent="CollectableItems" instance=ExtResource("18_6ec78")]
+position = Vector2(-1111, 69)
+
+[node name="Fog" type="Node" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="Fog"]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Fog/ParallaxBackground"]
+motion_mirroring = Vector2(640, 360)
+
+[node name="ColorRect" type="ColorRect" parent="Fog/ParallaxBackground/ParallaxLayer"]
+material = SubResource("ShaderMaterial_3o12v")
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(1, 0.784167, 0.63, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="BlockingCollision" type="StaticBody2D" parent="."]
+position = Vector2(-1245, 59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockingCollision"]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_8v5bs")
+
+[connection signal="pickup_roverHand" from="CollectableItems/Robohand" to="." method="_on_robohand_pickup_rover_hand"]

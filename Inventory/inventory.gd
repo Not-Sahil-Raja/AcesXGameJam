@@ -43,6 +43,9 @@ func use_item_at_index(index:int)->void:
 	if index < 0 || index >= slots.size() || !slots[index].item : return
 	
 	var slot = slots[index]
+	var Itemtype:String =  slot.item.Type
+	var ItemValue:int= slot.item.value
+	HudItems.recover(Itemtype, ItemValue)
 	if slot.amount> 1:
 		slot.amount -=1
 		updated.emit()

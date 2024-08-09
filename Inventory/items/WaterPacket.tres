@@ -8,3 +8,5 @@ script = ExtResource("1_0grsf")
 name = "Water Packet"
 texture = ExtResource("2_l6x67")
 maxAmountPerStack = 2
+Type = "hunger"
+value = 5

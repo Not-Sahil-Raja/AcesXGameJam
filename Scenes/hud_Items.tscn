@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ls0426aagydn" path="res://Assets/Bars/Hunger/Behind_HungerBar.png" id="10_d2fgt"]
 [ext_resource type="Texture2D" uid="uid://d04asxa7jfljo" path="res://Assets/Bars/Hunger/Over_HungerBar.png" id="11_syvwk"]
 [ext_resource type="Texture2D" uid="uid://cgb7veancwltg" path="res://Assets/Bars/Hunger/Progress_HungerBar.png" id="12_2kwff"]
-[ext_resource type="Texture2D" uid="uid://bskukkcxkfhki" path="res://Assets/Bars/Hud_Char_Frame.png" id="13_podxk"]
+[ext_resource type="Texture2D" uid="uid://b7pnku7lnd8ny" path="res://Assets/Bars/HUD_Char.png" id="13_80ee0"]
 
 [node name="HudItems" type="CanvasLayer"]
 layer = 2
@@ -86,7 +86,7 @@ texture_progress = ExtResource("12_2kwff")
 layout_mode = 0
 offset_right = 206.0
 offset_bottom = 45.0
-texture = ExtResource("13_podxk")
+texture = ExtResource("13_80ee0")
 
 [connection signal="timeout" from="Full_Screen_Control/Top_Control/BarsTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Full_Screen_Control/Top_Control/BarsTimer" to="Full_Screen_Control" method="_on_timer_timeout"]

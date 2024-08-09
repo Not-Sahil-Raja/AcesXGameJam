@@ -1,7 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://csc71tjsf500w"]
+[gd_scene load_steps=46 format=3 uid="uid://csc71tjsf500w"]
 
 [ext_resource type="PackedScene" uid="uid://v34kfwvlifqx" path="res://Scenes/player.tscn" id="1_ctm7b"]
+[ext_resource type="Script" path="res://Scripts/Level/Martian_canyon.gd" id="1_qga4b"]
 [ext_resource type="Script" path="res://Scripts/Main_Ui_Elements.gd" id="2_bucyn"]
+[ext_resource type="PackedScene" uid="uid://dr2sfvetg5vpt" path="res://Scenes/Collectable_Items/MRR_Battery.tscn" id="2_coogc"]
 [ext_resource type="PackedScene" uid="uid://ckufkrhpbl5ux" path="res://Scenes/InventoryGui.tscn" id="3_vxee5"]
 [ext_resource type="PackedScene" uid="uid://bdhginnp4ai0t" path="res://Inventory/hotbar.tscn" id="4_2136u"]
 [ext_resource type="Texture2D" uid="uid://8wcndwo4kt2e" path="res://Assets/Martian_Canyon_Scene/Canyon_BG_Rock.png" id="5_5gijr"]
@@ -10,6 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://d3w0yovyhhmyn" path="res://Assets/Martian_Canyon_Scene/Canyon_Tile_Map_Slopes.png" id="8_0flfu"]
 [ext_resource type="Texture2D" uid="uid://ddl2oilmxbyxp" path="res://Assets/Martian_Canyon_Scene/Canyon_TileMap_BreakPattern.png" id="9_lpi34"]
 [ext_resource type="Shader" path="res://Scenes/Fog.gdshader" id="10_qyau3"]
+[ext_resource type="PackedScene" uid="uid://cieef0acx3h8h" path="res://Scenes/Door.tscn" id="12_7q03y"]
+[ext_resource type="PackedScene" uid="uid://n453squ8c1gi" path="res://Scenes/InteractableItems/PreviousRobo.tscn" id="12_oxrn1"]
+[ext_resource type="FontFile" uid="uid://7f31858l617j" path="res://Pixel_fonts/BitCasual.ttf" id="14_ib8rc"]
+[ext_resource type="Texture2D" uid="uid://3njuuvsvf3rc" path="res://Assets/PCB_Circuit.png" id="16_03a6c"]
+[ext_resource type="Script" path="res://Scripts/PCB/PCB_Buttons.gd" id="16_mlfn6"]
+[ext_resource type="Script" path="res://Scripts/PCB/PCB_Buttons_B.gd" id="17_1w0oo"]
+[ext_resource type="Script" path="res://Scripts/PCB/PCB_Buttons_E.gd" id="17_yq87n"]
+[ext_resource type="Script" path="res://Scripts/PCB/PCB_Buttons_C.gd" id="18_283ve"]
+[ext_resource type="Script" path="res://Scripts/PCB/PCB_Buttons_D.gd" id="19_8f4u8"]
+[ext_resource type="Texture2D" uid="uid://1yscbropo57t" path="res://Assets/DataLogScreen.png" id="20_mmotp"]
+[ext_resource type="FontFile" uid="uid://cnaury175fy8e" path="res://Pixel_fonts/Beanstalk.ttf" id="21_eo836"]
+[ext_resource type="FontFile" uid="uid://bx5g4uykjxytc" path="res://Pixel_fonts/MonstaMono.ttf" id="22_agbk4"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v61gl"]
 load_path = "res://.godot/imported/Canyon_bg.png-166cda0a4f4549ecab0c8c33bc587d0f.ctex"
@@ -936,33 +950,43 @@ texture = ExtResource("8_0flfu")
 5:1/0 = 0
 5:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:1/0/physics_layer_0/angular_velocity = 0.0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -5.125, -6, 8, -8, 8, -8, -8, 8, -8)
 6:1/0 = 0
 6:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:1/0/physics_layer_0/angular_velocity = 0.0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.875, 8, -4.875, 8, -8, -8, -8)
 4:2/0 = 0
 4:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:2/0/physics_layer_0/angular_velocity = 0.0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -5.125, -6, 8, -8, 8, -8, -8, 8, -8)
 3:3/0 = 0
 3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -5.125, -6, 8, -8, 8, -8, -8, 8, -8)
 2:4/0 = 0
 2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:4/0/physics_layer_0/angular_velocity = 0.0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 1.625, -2.25, 8, -8, 8, -8, -8, 8, -8)
 3:4/0 = 0
 3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:4/0/physics_layer_0/angular_velocity = 0.0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 1.625, -8, 1.75, -8, -8, 8, -8)
 4:4/0 = 0
 4:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:4/0/physics_layer_0/angular_velocity = 0.0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 1.625, -8, 1.75, -8, -8, 8, -8)
 5:4/0 = 0
 5:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:4/0/physics_layer_0/angular_velocity = 0.0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 1.625, 5.25, 0, -3.25, 0.375, -8, 1.75, -8, -8, 8, -8)
 3:6/0 = 0
 3:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:6/0/physics_layer_0/angular_velocity = 0.0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -4.875, 8, -4.875, 8, -8, -8, -8)
 4:6/0 = 0
 4:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:6/0/physics_layer_0/angular_velocity = 0.0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.125, 6, 8, 8, 8, 8, -8, -8, -8)
 8:6/0 = 0
 8:6/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:6/0/physics_layer_0/angular_velocity = 0.0
@@ -972,9 +996,11 @@ texture = ExtResource("8_0flfu")
 5:7/0 = 0
 5:7/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:7/0/physics_layer_0/angular_velocity = 0.0
+5:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.125, 6, 8, 8, 8, 8, -8, -8, -8)
 6:8/0 = 0
 6:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:8/0/physics_layer_0/angular_velocity = 0.0
+6:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5.125, 6, 8, 8, 8, 8, -8, -8, -8)
 8:8/0 = 0
 8:8/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 8:8/0/physics_layer_0/angular_velocity = 0.0
@@ -984,15 +1010,19 @@ texture = ExtResource("8_0flfu")
 4:9/0 = 0
 4:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 4:9/0/physics_layer_0/angular_velocity = 0.0
+4:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 1.625, -5.25, 0, 3.25, 0.375, 8, 1.75, 8, -8, -8, -8)
 5:9/0 = 0
 5:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 5:9/0/physics_layer_0/angular_velocity = 0.0
+5:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.625, 8, 0.625, 8, -8, -8, -8)
 6:9/0 = 0
 6:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 6:9/0/physics_layer_0/angular_velocity = 0.0
+6:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.625, 8, 0.625, 8, -8, -8, -8)
 7:9/0 = 0
 7:9/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 7:9/0/physics_layer_0/angular_velocity = 0.0
+7:9/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 0.625, 4.125, 8, 8, 8, 8, -8, -8, -8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wy55b"]
 texture = ExtResource("9_lpi34")
@@ -1105,7 +1135,205 @@ shader_parameter/density = 0.25
 shader_parameter/speed = Vector2(0.02, 0.01)
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_ixq8a")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eg4mi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nadx"]
+
+[sub_resource type="Animation" id="Animation_r2hl5"]
+resource_name = "Failed_Text"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Failed_text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.941176), Color(1, 1, 1, 0.941176), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g0isc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Failed_text:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kmwmi"]
+_data = {
+"Failed_Text": SubResource("Animation_r2hl5"),
+"RESET": SubResource("Animation_g0isc")
+}
+
+[sub_resource type="Animation" id="Animation_68r54"]
+resource_name = "DataLogReveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/ScrollContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_81pr0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/ScrollContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BGRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hqntc"]
+resource_name = "DataLogHide"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/ScrollContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BGRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c3hq6"]
+_data = {
+"DataLogHide": SubResource("Animation_hqntc"),
+"DataLogReveal": SubResource("Animation_68r54"),
+"RESET": SubResource("Animation_81pr0")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0eyw"]
+size = Vector2(20, 92)
+
 [node name="Martian_Canyon" type="Node2D"]
+script = ExtResource("1_qga4b")
+
+[node name="MRR_Battery" parent="." instance=ExtResource("2_coogc")]
+position = Vector2(-789, 2)
+rotation = 0.0959518
 
 [node name="Player" parent="." instance=ExtResource("1_ctm7b")]
 position = Vector2(381, 5)
@@ -1166,7 +1394,7 @@ layer = 1
 motion_mirroring = Vector2(1920, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Front_rock_ParallaxBackground/ParallaxLayer"]
-self_modulate = Color(0.585062, 0.585062, 0.585062, 1)
+self_modulate = Color(0.355314, 0.355314, 0.355313, 1)
 position = Vector2(-97, -230)
 texture = ExtResource("6_a2nxe")
 
@@ -1185,7 +1413,6 @@ color = Color(0.779291, 0.779291, 0.779291, 1)
 energy = 1.79
 blend_mode = 2
 range_layer_min = -400
-range_layer_max = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
 environment = SubResource("Environment_i6re7")
@@ -1209,3 +1436,313 @@ material = SubResource("ShaderMaterial_88cf5")
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(1, 0.784167, 0.63, 1)
+
+[node name="PrveROVER" parent="." instance=ExtResource("12_oxrn1")]
+position = Vector2(-306, -11)
+
+[node name="Door_for_Previous_Base" parent="." instance=ExtResource("12_7q03y")]
+z_index = 3
+position = Vector2(-1262, -12)
+scale = Vector2(1, 2.84)
+entry_direction = 1
+transition_type = "fade_to_black"
+path_to_new_scene = "res://Scenes/Levels/PreviousBase.tscn"
+entry_door_name = "WestDoor"
+
+[node name="UiItems" type="CanvasLayer" parent="."]
+process_mode = 3
+layer = 3
+
+[node name="Control" type="Control" parent="UiItems"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Objectives_panel" type="Panel" parent="UiItems/Control"]
+self_modulate = Color(1, 1, 1, 0.666667)
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 1
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 240.0
+offset_bottom = 110.0
+metadata/_edit_use_anchors_ = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UiItems/Control/Objectives_panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+draw_center = false
+
+[node name="Objectives_container" type="VBoxContainer" parent="UiItems/Control/Objectives_panel/NinePatchRect"]
+custom_minimum_size = Vector2(220, 40)
+layout_mode = 0
+offset_left = 8.0
+offset_right = 48.0
+offset_bottom = 40.0
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Objective_text" type="Label" parent="UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container"]
+custom_minimum_size = Vector2(220, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_ib8rc")
+text = "text"
+autowrap_mode = 2
+
+[node name="Objective_text2" type="Label" parent="UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container"]
+custom_minimum_size = Vector2(220, 10)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("14_ib8rc")
+theme_override_font_sizes/font_size = 16
+
+[node name="PCB" type="CenterContainer" parent="UiItems/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -180.0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BGRect" type="ColorRect" parent="UiItems/Control/PCB"]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+color = Color(0, 0, 0, 0.545098)
+
+[node name="PCB_Connectors" type="Sprite2D" parent="UiItems/Control/PCB"]
+position = Vector2(320, 180)
+texture = ExtResource("16_03a6c")
+
+[node name="Panel" type="Panel" parent="UiItems/Control/PCB/PCB_Connectors"]
+offset_left = -9.0
+offset_top = -50.0
+offset_right = -9.0
+offset_bottom = 30.0
+
+[node name="A_Button" type="Button" parent="UiItems/Control/PCB/PCB_Connectors/Panel"]
+layout_mode = 2
+offset_left = -5.0
+offset_top = -3.0
+offset_right = 8.0
+offset_bottom = 20.0
+theme_override_fonts/font = ExtResource("21_eo836")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eg4mi")
+text = "A"
+script = ExtResource("16_mlfn6")
+value = "A"
+
+[node name="B_Button" type="Button" parent="UiItems/Control/PCB/PCB_Connectors/Panel"]
+layout_mode = 2
+offset_left = 27.0
+offset_top = -4.0
+offset_right = 40.0
+offset_bottom = 19.0
+theme_override_fonts/font = ExtResource("21_eo836")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eg4mi")
+text = "B"
+script = ExtResource("17_1w0oo")
+value = "B"
+
+[node name="C_Button" type="Button" parent="UiItems/Control/PCB/PCB_Connectors/Panel"]
+layout_mode = 2
+offset_left = -5.0
+offset_top = 59.0
+offset_right = 8.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("21_eo836")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eg4mi")
+text = "C"
+script = ExtResource("18_283ve")
+value = "C"
+
+[node name="D_Button" type="Button" parent="UiItems/Control/PCB/PCB_Connectors/Panel"]
+layout_mode = 2
+offset_left = 26.0
+offset_top = 60.0
+offset_right = 39.0
+offset_bottom = 83.0
+theme_override_fonts/font = ExtResource("21_eo836")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eg4mi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_eg4mi")
+text = "D"
+script = ExtResource("19_8f4u8")
+value = "D"
+
+[node name="E_Button" type="Button" parent="UiItems/Control/PCB/PCB_Connectors/Panel"]
+layout_mode = 0
+offset_left = -58.0
+offset_top = -21.0
+offset_right = -39.0
+offset_bottom = 10.0
+theme_override_fonts/font = ExtResource("21_eo836")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2nadx")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2nadx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2nadx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2nadx")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2nadx")
+text = "E"
+script = ExtResource("17_yq87n")
+value = "E"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UiItems/Control/PCB/PCB_Connectors"]
+offset_left = -240.0
+offset_top = 146.0
+offset_right = 168.0
+offset_bottom = 167.0
+theme_override_fonts/normal_font = ExtResource("14_ib8rc")
+text = "! Connect wires by Clicking The Connector In Correct Order"
+
+[node name="Failed_text" type="Label" parent="UiItems/Control/PCB/PCB_Connectors"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -278.0
+offset_top = 108.0
+offset_right = -67.0
+offset_bottom = -56.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_ib8rc")
+text = "Failed to Connect TryAgain !!"
+
+[node name="Success_Text" type="Label" parent="UiItems/Control/PCB/PCB_Connectors"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = -281.0
+offset_top = 132.0
+offset_right = -70.0
+offset_bottom = -27.0
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.631373, 0, 1)
+theme_override_fonts/font = ExtResource("14_ib8rc")
+text = "Failed to Connect TryAgain !!"
+
+[node name="PCB_AnimationPlayer" type="AnimationPlayer" parent="UiItems/Control/PCB/PCB_Connectors"]
+libraries = {
+"": SubResource("AnimationLibrary_kmwmi")
+}
+
+[node name="DataLog_Screen" type="Sprite2D" parent="UiItems/Control/PCB"]
+visible = false
+self_modulate = Color(1, 0.7535, 0.49, 1)
+position = Vector2(321, 180)
+texture = ExtResource("20_mmotp")
+
+[node name="MarginContainer" type="MarginContainer" parent="UiItems/Control/PCB/DataLog_Screen"]
+custom_minimum_size = Vector2(640, 360)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UiItems/Control/PCB/DataLog_Screen/MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiItems/Control/PCB/DataLog_Screen/MarginContainer/ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+
+[node name="Datalog Name" type="RichTextLabel" parent="UiItems/Control/PCB/DataLog_Screen/MarginContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(410, 17.75)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("21_eo836")
+theme_override_fonts/bold_font = ExtResource("21_eo836")
+theme_override_font_sizes/bold_font_size = 16
+bbcode_enabled = true
+text = "Rover ID: MRR-II
+Status: Critical
+Communication Module: Intermittent"
+fit_content = true
+
+[node name="Datalog Description" type="RichTextLabel" parent="UiItems/Control/PCB/DataLog_Screen/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.384314, 0.878431, 0.309804, 1)
+theme_override_fonts/normal_font = ExtResource("21_eo836")
+theme_override_fonts/bold_font = ExtResource("21_eo836")
+bbcode_enabled = true
+text = "Warning: Encountered unidentified biological entity. Sample analysis suggests rapid cellular division and environmental interaction. Organism exhibits signs of electromagnetic sensitivity, possibly influencing rover systems. Current location compromised—structural instability detected.
+Mission data and samples stored securely. Communication with base camp severed. Mobility impaired. Unable to proceed. Immediate retrieval of data and containment of organism recommended.
+
+Final transmission coordinates logged. Proceed with extreme caution.
+
+MRR-II, signing off."
+fit_content = true
+
+[node name="CloseButton" type="Button" parent="UiItems/Control/PCB/DataLog_Screen"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -467.0
+offset_top = -254.0
+offset_right = -419.0
+offset_bottom = -235.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(25, 11)
+theme_override_fonts/font = ExtResource("22_agbk4")
+text = "Close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UiItems/Control/PCB/DataLog_Screen"]
+libraries = {
+"": SubResource("AnimationLibrary_c3hq6")
+}
+
+[node name="BlockingCollision" type="StaticBody2D" parent="."]
+position = Vector2(-845, 70)
+scale = Vector2(1, 2.84)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockingCollision"]
+position = Vector2(-360, -31)
+shape = SubResource("RectangleShape2D_k0eyw")
+
+[connection signal="got_MRR_Battery" from="MRR_Battery" to="." method="_on_mrr_battery_got_mrr_battery"]
+[connection signal="on_Interact_PrevRover" from="PrveROVER" to="." method="_on_prve_rover_on_interact_prev_rover"]
+[connection signal="ButtonClicked" from="UiItems/Control/PCB/PCB_Connectors/Panel/A_Button" to="." method="_on_a_button_button_clicked"]
+[connection signal="ButtonClicked" from="UiItems/Control/PCB/PCB_Connectors/Panel/B_Button" to="." method="_on_b_button_button_clicked"]
+[connection signal="ButtonClicked" from="UiItems/Control/PCB/PCB_Connectors/Panel/C_Button" to="." method="_on_c_button_button_clicked"]
+[connection signal="ButtonClicked" from="UiItems/Control/PCB/PCB_Connectors/Panel/D_Button" to="." method="_on_d_button_button_clicked"]
+[connection signal="ButtonClicked" from="UiItems/Control/PCB/PCB_Connectors/Panel/E_Button" to="." method="_on_e_button_button_clicked"]
+[connection signal="pressed" from="UiItems/Control/PCB/DataLog_Screen/CloseButton" to="." method="_on_close_button_pressed"]

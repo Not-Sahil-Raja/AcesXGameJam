@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Inventory" load_steps=17 format=3 uid="uid://bq0ve57ib3vnm"]
 
+[ext_resource type="Resource" uid="uid://b2se5gihahfi3" path="res://Inventory/items/OxygenReplenishmentPack.tres" id="2_b2po1"]
 [ext_resource type="Script" path="res://Inventory/inventorySlot.gd" id="2_d5yon"]
-[ext_resource type="Resource" uid="uid://dejb042mjmtcp" path="res://Inventory/items/redCables.tres" id="2_l1bsi"]
+[ext_resource type="Resource" uid="uid://dejb042mjmtcp" path="res://Inventory/items/BioGel_Pack.tres" id="2_l1bsi"]
 [ext_resource type="Script" path="res://Inventory/inventory.gd" id="2_scp7t"]
-[ext_resource type="Resource" uid="uid://b2se5gihahfi3" path="res://Inventory/items/SpaceSuit_Battery.tres" id="2_y3gls"]
 
 [sub_resource type="Resource" id="Resource_bkcgd"]
 script = ExtResource("2_d5yon")
-item = ExtResource("2_y3gls")
+item = ExtResource("2_b2po1")
 amount = 2
 
 [sub_resource type="Resource" id="Resource_ug2x7"]

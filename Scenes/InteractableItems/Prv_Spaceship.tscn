@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c6dt41bvnkloc"]
+
+[ext_resource type="Script" path="res://Scripts/InteractableItem/PrvSpaceShip.gd" id="1_32n5v"]
+[ext_resource type="Texture2D" uid="uid://c8tjook37ftpt" path="res://Assets/PreviousBase/Previous Spaceship.png" id="2_0jb35"]
+[ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="3_qlx7g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
+size = Vector2(651, 150.5)
+
+[node name="PrvSpaceShip" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+script = ExtResource("1_32n5v")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.800494, 0.744304, 0.734222, 1)
+position = Vector2(660, -127)
+texture = ExtResource("2_0jb35")
+
+[node name="InteractionScene" parent="." instance=ExtResource("3_qlx7g")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionScene"]
+position = Vector2(39, -31)
+shape = SubResource("RectangleShape2D_hkxl7")
+
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="ready" from="Sprite2D" to="." method="_on_sprite_2d_ready"]

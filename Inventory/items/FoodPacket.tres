@@ -8,3 +8,5 @@ script = ExtResource("1_w2jrn")
 name = "Food Packet"
 texture = ExtResource("2_6sn62")
 maxAmountPerStack = 5
+Type = "hunger"
+value = 10

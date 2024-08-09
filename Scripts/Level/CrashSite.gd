@@ -9,7 +9,9 @@ extends Node2D
 @onready var objective_text = $UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container/Objective_text
 @onready var objective_text_2 = $UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container/Objective_text2
 @onready var block_road = $BlockRoad
+@onready var shape_ship_broken = $"ShapeShip_Items/ShapeShip Broken"
 
+var rover
 
 var shards:int = 3
 var Disc:int = 1
@@ -79,9 +81,17 @@ func _on_rover_broken_fix_rover():
 	if !GasCan:
 		rover_broken.remove_collision()
 		Rover_Fixing=true
+		var rover_anim_player : AnimationPlayer= rover_broken.find_child("Rover_Anim_player")
+		rover_anim_player.play("on_Fixed")
+		await rover_anim_player.animation_finished
+		rover_broken.move_rover()
+		
 		if Rover_Fixing && Satallite_fixing:
 			block_road.queue_free()
-	
+			
 
 func _on_rover_gascan_got_gas_can():
 	GasCan-= 1
+
+
+	
