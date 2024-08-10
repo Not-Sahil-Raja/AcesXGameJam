@@ -394,6 +394,7 @@ path_to_new_scene = "res://Scenes/Levels/Martian_canyon.tscn"
 entry_door_name = "WestDoor"
 
 [node name="Player" parent="." instance=ExtResource("1_wtd64")]
+Torch = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_c23pk")

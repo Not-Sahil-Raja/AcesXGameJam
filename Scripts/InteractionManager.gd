@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var label= $Label
+@onready var pick_up_sound = $PickUp
 
 const base_Text="[E] to "
 
@@ -38,7 +39,7 @@ func _input(event):
 		if active_areas.size() > 0:
 			can_interact = false
 			label.hide()
-			
+			pick_up_sound.play()
 			await active_areas[0].interact.call()
 			
 			can_interact= true

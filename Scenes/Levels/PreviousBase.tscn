@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dedxf4sy3b21g"]
+[gd_scene load_steps=37 format=3 uid="uid://dedxf4sy3b21g"]
 
 [ext_resource type="PackedScene" uid="uid://v34kfwvlifqx" path="res://Scenes/player.tscn" id="1_e8sgy"]
 [ext_resource type="Script" path="res://Scripts/Level/PreviousBase.gd" id="1_hljl0"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://btbrqrupt6nnu" path="res://Assets/PreviousBase/Previous site Bg Sky.png" id="4_i7ch7"]
 [ext_resource type="Texture2D" uid="uid://cbsx0vsvia7n7" path="res://Assets/PreviousBase/Previous site Bg Wall Rock.png" id="5_0lniv"]
 [ext_resource type="Texture2D" uid="uid://cjhqbas6jt4bm" path="res://Assets/PreviousBase/Previous site Bg Cloud.png" id="5_gf87a"]
+[ext_resource type="PackedScene" uid="uid://bdhginnp4ai0t" path="res://Inventory/hotbar.tscn" id="5_lw111"]
 [ext_resource type="Texture2D" uid="uid://sswn3vodw6gq" path="res://Assets/PreviousBase/Previous site MidRock.png" id="5_naq6w"]
 [ext_resource type="Texture2D" uid="uid://blcpx8d6tu2va" path="res://Assets/PreviousBase/Previous site FrontRock.png" id="6_yg6s8"]
 [ext_resource type="Shader" path="res://Scenes/Fog.gdshader" id="7_d6eh0"]
@@ -679,6 +680,16 @@ script = ExtResource("2_c55ob")
 offset_left = -149.0
 offset_right = 149.0
 
+[node name="Hotbar" parent="Inventory_Canvas" instance=ExtResource("5_lw111")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -245.0
+offset_top = 23.0
+offset_right = -24.0
+offset_bottom = 64.0
+grow_horizontal = 0
+
 [node name="Parallax" type="Node" parent="."]
 
 [node name="Parallax Sky" type="ParallaxBackground" parent="Parallax"]
@@ -1002,7 +1013,7 @@ scale = Vector2(1, 2.84)
 entry_direction = 1
 transition_type = "fade_to_black"
 path_to_new_scene = "res://Scenes/Levels/Final_Fight.tscn"
-entry_door_name = "WestDoor"
+entry_door_name = "EastDoor"
 
 [node name="BlockingCollision" type="StaticBody2D" parent="."]
 position = Vector2(-1245, 59)

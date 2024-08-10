@@ -1614,11 +1614,12 @@ value = "E"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UiItems/Control/PCB/PCB_Connectors"]
 offset_left = -240.0
-offset_top = 146.0
+offset_top = 128.0
 offset_right = 168.0
 offset_bottom = 167.0
 theme_override_fonts/normal_font = ExtResource("14_ib8rc")
-text = "! Connect wires by Clicking The Connector In Correct Order"
+text = "! Connect wires by Clicking The Connector In Correct Order
+	Press On the E first Then C"
 
 [node name="Failed_text" type="Label" parent="UiItems/Control/PCB/PCB_Connectors"]
 modulate = Color(1, 1, 1, 0)

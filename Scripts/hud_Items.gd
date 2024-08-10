@@ -1,13 +1,20 @@
 extends Node
 
-var maxHunger:int = 75
-var maxOxygen:int = 103.5
-var maxHelath:int = 98
 @onready var timer:Timer = $Full_Screen_Control/Top_Control/BarsTimer
 @onready var hunger_bar:TextureProgressBar = $Full_Screen_Control/Top_Control/Bars_hud/HungerBar
 @onready var oxygen_bar:TextureProgressBar = $Full_Screen_Control/Top_Control/Bars_hud/OxygenBar
 @onready var health_bar = $Full_Screen_Control/Top_Control/Bars_hud/HealthBar
 @onready var bars_hud = $Full_Screen_Control/Top_Control/Bars_hud
+@onready var bg_music = $BgMusic
+@onready var damageMusic = $Damage
+@onready var guide = $Full_Screen_Control/Guide
+@onready var anim_palyer = $Anim_palyer
+
+
+var maxHunger:int = 75
+var maxOxygen:int = 103.5
+var maxHelath:int = 98
+var guide_showing:bool=false
 
 
 func _process(delta):
@@ -51,6 +58,7 @@ func CheckPlayerDead()->void:
 func take_damage(dmgAmnt):
 	decrease_bar(health_bar, dmgAmnt)
 	CheckPlayerDead()
+	damageMusic.play()
 	
 func resetHud():
 	oxygen_bar.value=maxOxygen
@@ -68,3 +76,20 @@ func recover(bar:String, value:int):
 		"hunger":
 			hunger_bar.value += value
 			hunger_bar.value = min(hunger_bar.value , maxHunger)
+
+func playMusic():
+	bg_music.play()
+
+func StopMusic():
+	bg_music.stop()
+	
+func ShowGuide():
+	if !guide_showing:
+		guide_showing=true
+		anim_palyer.play("Guide_Reveal")
+		await anim_palyer.animation_finished
+		guide_showing=false
+
+
+func _on_guide_button_pressed():
+	ShowGuide()

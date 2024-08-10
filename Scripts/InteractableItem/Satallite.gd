@@ -29,3 +29,4 @@ func Satallite_fixed():
 	
 func CheckConnection():
 	scanning.emit()
+	interaction_scene.queue_free()

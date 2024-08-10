@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://f7hcckew68lu"
+path="res://.godot/imported/digging IN OUT.wav-466abcd114e7e5f49a9bd92a63cc5990.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/digging IN OUT.wav"
+dest_files=["res://.godot/imported/digging IN OUT.wav-466abcd114e7e5f49a9bd92a63cc5990.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

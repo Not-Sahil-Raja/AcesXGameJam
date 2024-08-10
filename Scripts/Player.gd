@@ -47,8 +47,8 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("refil"):
-		HudItems.oxygen_refill()
+	if Input.is_action_just_pressed("Guide"):
+		HudItems.ShowGuide()
 	
 	if movement_active:
 		if _can_Shoot:
@@ -184,6 +184,7 @@ func dead()->void:
 	ui_anim_player.play("Dead")
 	await ui_anim_player.animation_finished
 	HudItems.resetHud()
-	get_tree().reload_current_scene()
+	if get_tree().current_scene:
+		get_tree().reload_current_scene()
 
 

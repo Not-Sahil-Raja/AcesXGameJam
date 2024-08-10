@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var player= get_parent().find_child("Player")
 @onready var sprite_2d = $Sprite2D
 @onready var progress_bar = $Boss_Ui_Elements/ProgressBar
+@onready var bg_music = $Audio/BGMusic
 
 var direction: Vector2
 var DEF = 0
@@ -21,7 +22,7 @@ var health = 100:
 
 func _ready():
 	set_physics_process(false)
-
+	StopTheBgM()
 func _process(delta):
 	direction = player.position - position
 	
@@ -46,3 +47,10 @@ func _on_laser_player_detection_body_entered(body):
 
 func transition_to_mainMenu():
 	SceneManager.load_new_scene("res://Scenes/Levels/StartScreen.tscn","fade_to_black")
+
+func StopTheBgM():
+	HudItems.StopMusic()
+	bg_music.play()
+func meleeDamage():
+	HudItems.take_damage(20)
+

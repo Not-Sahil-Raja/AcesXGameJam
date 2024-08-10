@@ -4,7 +4,7 @@
 [ext_resource type="Resource" uid="uid://b2se5gihahfi3" path="res://Inventory/items/OxygenReplenishmentPack.tres" id="2_eewiv"]
 [ext_resource type="PackedScene" uid="uid://mgbqet0t6b4e" path="res://interaction/interaction area/interaction_scene.tscn" id="2_wkdis"]
 [ext_resource type="Resource" uid="uid://bq0ve57ib3vnm" path="res://Inventory/playerInventory.tres" id="3_c0v04"]
-[ext_resource type="Texture2D" uid="uid://bi4vrj8l2y6d1" path="res://Assets/SpriteLogos/batttery.png" id="4_2ja8h"]
+[ext_resource type="Texture2D" uid="uid://nffdaibmm0xd" path="res://Assets/SpriteLogos/OxygenItem.png" id="4_m1mhn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hkxl7"]
 size = Vector2(38, 28)
@@ -16,9 +16,8 @@ inventory = ExtResource("3_c0v04")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3, -4)
-rotation = -1.07117
 scale = Vector2(0.71875, 0.71875)
-texture = ExtResource("4_2ja8h")
+texture = ExtResource("4_m1mhn")
 
 [node name="InteractionScene" parent="." instance=ExtResource("2_wkdis")]
 

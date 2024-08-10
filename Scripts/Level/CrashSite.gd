@@ -11,6 +11,7 @@ extends Node2D
 @onready var block_road = $BlockRoad
 @onready var shape_ship_broken = $"ShapeShip_Items/ShapeShip Broken"
 
+
 var rover
 
 var shards:int = 3
@@ -23,6 +24,8 @@ var Rover_Fixing:bool = false
 func _ready():
 	update_Objectivetext1()
 	update_Objectivetext2()
+	HudItems.ShowGuide()
+	
 	
 # Pickup Solar Panel
 func _on_satallite_shards_got_shard():

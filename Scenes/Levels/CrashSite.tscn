@@ -239,10 +239,11 @@ grow_horizontal = 0
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Parallax/ParallaxSky"]
 motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1500, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/ParallaxSky/ParallaxLayer"]
 modulate = Color(0.716296, 0.716296, 0.716296, 1)
-position = Vector2(0, 109)
+position = Vector2(-78.535, 109)
 scale = Vector2(0.95, 0.95)
 texture = ExtResource("5_js1bc")
 

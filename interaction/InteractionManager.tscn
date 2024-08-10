@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl5rw15swkqk0"]
+[gd_scene load_steps=4 format=3 uid="uid://dl5rw15swkqk0"]
 
 [ext_resource type="Script" path="res://Scripts/InteractionManager.gd" id="1_hqrxi"]
 [ext_resource type="FontFile" uid="uid://cnaury175fy8e" path="res://Pixel_fonts/Beanstalk.ttf" id="2_ssuu5"]
+[ext_resource type="AudioStream" uid="uid://cc4x5733u3gp8" path="res://Assets/Audio/pickup.mp3" id="3_s6mxc"]
 
 [node name="InteractionManager" type="Node2D"]
 script = ExtResource("1_hqrxi")
@@ -21,3 +22,7 @@ theme_override_fonts/font = ExtResource("2_ssuu5")
 text = "[ E ] To Interact"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="PickUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_s6mxc")
+volume_db = -8.5

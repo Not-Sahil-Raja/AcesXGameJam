@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxu52wxbotoyg"]
+[gd_scene load_steps=20 format=3 uid="uid://bxu52wxbotoyg"]
 
 [ext_resource type="Script" path="res://Scripts/hud_Items.gd" id="1_6g43k"]
 [ext_resource type="Texture2D" uid="uid://cwouxy1nlew76" path="res://Assets/Bars/Bars_Bg.png" id="2_ixjxs"]
@@ -13,6 +13,46 @@
 [ext_resource type="Texture2D" uid="uid://d04asxa7jfljo" path="res://Assets/Bars/Hunger/Over_HungerBar.png" id="11_syvwk"]
 [ext_resource type="Texture2D" uid="uid://cgb7veancwltg" path="res://Assets/Bars/Hunger/Progress_HungerBar.png" id="12_2kwff"]
 [ext_resource type="Texture2D" uid="uid://b7pnku7lnd8ny" path="res://Assets/Bars/HUD_Char.png" id="13_80ee0"]
+[ext_resource type="AudioStream" uid="uid://c55g6l52q0dui" path="res://Assets/Audio/space-sound-hi-low-109574.mp3" id="14_b308h"]
+[ext_resource type="FontFile" uid="uid://cnaury175fy8e" path="res://Pixel_fonts/Beanstalk.ttf" id="14_c2jd8"]
+[ext_resource type="AudioStream" uid="uid://care8r17keqid" path="res://Assets/Audio/damage taken.wav" id="15_wg6eb"]
+
+[sub_resource type="Animation" id="Animation_yppsl"]
+resource_name = "Guide_Reveal"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full_Screen_Control/Guide:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 4.4, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e6qvc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Full_Screen_Control/Guide:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3bp4k"]
+_data = {
+"Guide_Reveal": SubResource("Animation_yppsl"),
+"RESET": SubResource("Animation_e6qvc")
+}
 
 [node name="HudItems" type="CanvasLayer"]
 layer = 2
@@ -88,5 +128,59 @@ offset_right = 206.0
 offset_bottom = 45.0
 texture = ExtResource("13_80ee0")
 
+[node name="Guide" type="Panel" parent="Full_Screen_Control"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -106.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Gui" type="Label" parent="Full_Screen_Control/Guide"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 17.0
+offset_right = 192.0
+offset_bottom = 90.0
+theme_override_fonts/font = ExtResource("14_c2jd8")
+text = "Press W A S D To Move
+Tab : to open Inventory
+U :  to use 
+Q :  to Shoot "
+
+[node name="Guide_Button" type="Button" parent="Full_Screen_Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -65.0
+offset_top = -42.21
+offset_right = -19.0
+offset_bottom = -19.21
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("14_c2jd8")
+text = "[G] Guide"
+
+[node name="Anim_palyer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3bp4k")
+}
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_b308h")
+volume_db = -1.5
+
+[node name="Damage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_wg6eb")
+volume_db = -1.0
+bus = &"SFX"
+
 [connection signal="timeout" from="Full_Screen_Control/Top_Control/BarsTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Full_Screen_Control/Top_Control/BarsTimer" to="Full_Screen_Control" method="_on_timer_timeout"]
+[connection signal="pressed" from="Full_Screen_Control/Guide_Button" to="." method="_on_guide_button_pressed"]
