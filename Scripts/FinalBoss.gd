@@ -43,3 +43,6 @@ func take_damage():
 func _on_laser_player_detection_body_entered(body):
 	if body== player:
 		HudItems.take_damage(10)
+
+func transition_to_mainMenu():
+	SceneManager.load_new_scene("res://Scenes/Levels/StartScreen.tscn","fade_to_black")

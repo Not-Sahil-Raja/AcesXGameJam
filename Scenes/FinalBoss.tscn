@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dkamo8bs83psg"]
+[gd_scene load_steps=35 format=3 uid="uid://dkamo8bs83psg"]
 
 [ext_resource type="Script" path="res://Scripts/FinalBoss.gd" id="1_28lb1"]
 [ext_resource type="Texture2D" uid="uid://cpf5usdlv71tp" path="res://Assets/BossSprites/Laser_.png" id="2_6i5bb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="3_iftqj"]
 [ext_resource type="FontFile" uid="uid://7f31858l617j" path="res://Pixel_fonts/BitCasual.ttf" id="4_11sny"]
 [ext_resource type="Script" path="res://Scripts/BossIdle.gd" id="4_vyjpn"]
+[ext_resource type="FontFile" uid="uid://cnaury175fy8e" path="res://Pixel_fonts/Beanstalk.ttf" id="5_f3lcf"]
 [ext_resource type="Script" path="res://Scripts/BossFollow.gd" id="6_6nec7"]
 [ext_resource type="Script" path="res://Scripts/BossLaserBeam.gd" id="6_kx427"]
 [ext_resource type="Script" path="res://Scripts/BossMeleeAttack.gd" id="8_2836w"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" path="res://Scripts/BossDeath.gd" id="12_n06hp"]
 [ext_resource type="Script" path="res://Scripts/BossArmorBuff.gd" id="13_xtoj4"]
 [ext_resource type="AudioStream" uid="uid://psd4j08vp3sk" path="res://Assets/Audio/Boss_Laser_.wav" id="15_du7po"]
+[ext_resource type="AudioStream" uid="uid://bu751nnoua62s" path="res://Assets/Audio/story/Final Speech.mp3" id="16_o6yrk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jys87"]
 
@@ -136,6 +138,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Boss_Ui_Elements/BG:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Boss_Ui_Elements/Thank you for playing:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2o04d"]
 resource_name = "SpikeAttack"
@@ -170,7 +196,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ccxv6"]
 resource_name = "boss_slained"
-length = 2.00001
+length = 47.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -178,10 +204,10 @@ tracks/0/path = NodePath("Boss_Ui_Elements/Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4, 1.7, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -190,12 +216,62 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(47),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"transition_to_mainMenu"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Boss_Ui_Elements/BG:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/final Word")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Boss_Ui_Elements/Thank you for playing:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Boss_Ui_Elements/Thank you for playing:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(26.3, 41.5, 46.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_ckn4a"]
@@ -434,7 +510,7 @@ libraries = {
 }
 
 [node name="Boss_Ui_Elements" type="CanvasLayer" parent="."]
-layer = 3
+layer = 4
 
 [node name="ProgressBar" type="ProgressBar" parent="Boss_Ui_Elements"]
 visible = false
@@ -478,6 +554,32 @@ theme_override_font_sizes/font_size = 64
 text = "Boss Slained
 "
 
+[node name="BG" type="ColorRect" parent="Boss_Ui_Elements"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Thank you for playing" type="Label" parent="Boss_Ui_Elements"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -15.0
+offset_right = 100.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_f3lcf")
+theme_override_font_sizes/font_size = 32
+text = "Thank you for Playing"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-58, -119)
 shape = SubResource("CapsuleShape2D_pxr4r")
@@ -520,6 +622,7 @@ script = ExtResource("12_n06hp")
 script = ExtResource("13_xtoj4")
 
 [node name="debug" type="Label" parent="."]
+visible = false
 offset_left = -47.0
 offset_top = -160.0
 offset_right = 3.0
@@ -534,6 +637,10 @@ position = Vector2(-21, -200)
 [node name="LaserBeamAudio" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("15_du7po")
 volume_db = -5.5
+
+[node name="final Word" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("16_o6yrk")
+volume_db = -4.0
 
 [connection signal="body_entered" from="Pivot/laser_player_detection" to="." method="_on_laser_player_detection_body_entered"]
 [connection signal="body_entered" from="player Detection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]
