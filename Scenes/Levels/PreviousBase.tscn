@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dedxf4sy3b21g"]
+[gd_scene load_steps=36 format=3 uid="uid://dedxf4sy3b21g"]
 
 [ext_resource type="PackedScene" uid="uid://v34kfwvlifqx" path="res://Scenes/player.tscn" id="1_e8sgy"]
 [ext_resource type="Script" path="res://Scripts/Level/PreviousBase.gd" id="1_hljl0"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://1yscbropo57t" path="res://Assets/DataLogScreen.png" id="17_4oocr"]
 [ext_resource type="FontFile" uid="uid://bx5g4uykjxytc" path="res://Pixel_fonts/MonstaMono.ttf" id="18_aofy7"]
 [ext_resource type="PackedScene" uid="uid://cieef0acx3h8h" path="res://Scenes/Door.tscn" id="19_6tw0s"]
+[ext_resource type="AudioStream" uid="uid://ddw71uydd12yd" path="res://Assets/Audio/NishaVerma(PrvBase).wav" id="19_sd8k1"]
 
 [sub_resource type="Environment" id="Environment_5lhiu"]
 glow_enabled = true
@@ -985,6 +986,9 @@ grow_vertical = 0
 pivot_offset = Vector2(25, 11)
 theme_override_fonts/font = ExtResource("18_aofy7")
 text = "Close"
+
+[node name="Datalog_AudioStreamPlayer" type="AudioStreamPlayer" parent="UiItems/Control/DataLogContainer/DataLog_Screen"]
+stream = ExtResource("19_sd8k1")
 
 [node name="AnimationPlayer_DataLog" type="AnimationPlayer" parent="UiItems/Control/DataLogContainer"]
 libraries = {

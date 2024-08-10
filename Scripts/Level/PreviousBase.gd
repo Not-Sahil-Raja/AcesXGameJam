@@ -7,6 +7,7 @@ extends Node2D
 @onready var objective_text = $UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container/Objective_text
 @onready var objective_text_2 = $UiItems/Control/Objectives_panel/NinePatchRect/Objectives_container/Objective_text2
 @onready var blocking_collision = $BlockingCollision
+@onready var datalog_audio_stream_player = $UiItems/Control/DataLogContainer/DataLog_Screen/Datalog_AudioStreamPlayer
 
 var Objective_Done:int= 0
 
@@ -29,6 +30,8 @@ func _play_close_itemPickedUp():
 	
 func _on_button_pressed():
 	animation_player_data_log.play("DataLogExit")
+	if datalog_audio_stream_player.playing:
+		datalog_audio_stream_player.stop()
 	
 func _on_animation_player_data_log_animation_finished(anim_name):
 	if anim_name == "DataLogExit":
@@ -43,3 +46,5 @@ func _on_prv_base_camp_prv_base_camp_inetracted():
 	data_log_container.visible=true
 	animation_player_data_log.play("DataLogReveal")
 	player.disable_move()
+	await animation_player_data_log.animation_finished
+	datalog_audio_stream_player.play()

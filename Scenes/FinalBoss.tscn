@@ -1,8 +1,8 @@
-[gd_scene load_steps=31 format=3 uid="uid://dkamo8bs83psg"]
+[gd_scene load_steps=33 format=3 uid="uid://dkamo8bs83psg"]
 
 [ext_resource type="Script" path="res://Scripts/FinalBoss.gd" id="1_28lb1"]
-[ext_resource type="Texture2D" uid="uid://fujxplhlvq1x" path="res://Assets/BossSprites/Idle.png" id="1_gllbq"]
 [ext_resource type="Texture2D" uid="uid://cpf5usdlv71tp" path="res://Assets/BossSprites/Laser_.png" id="2_6i5bb"]
+[ext_resource type="Texture2D" uid="uid://wlipbidqrlq4" path="res://Assets/BossSprites/Boss_Sprite_Animations.png" id="2_kodxt"]
 [ext_resource type="Script" path="res://Scripts/FiniteStateMachine.gd" id="3_iftqj"]
 [ext_resource type="FontFile" uid="uid://7f31858l617j" path="res://Pixel_fonts/BitCasual.ttf" id="4_11sny"]
 [ext_resource type="Script" path="res://Scripts/BossIdle.gd" id="4_vyjpn"]
@@ -14,11 +14,14 @@
 [ext_resource type="Script" path="res://Scripts/BossDash.gd" id="11_qugc4"]
 [ext_resource type="Script" path="res://Scripts/BossDeath.gd" id="12_n06hp"]
 [ext_resource type="Script" path="res://Scripts/BossArmorBuff.gd" id="13_xtoj4"]
+[ext_resource type="AudioStream" uid="uid://psd4j08vp3sk" path="res://Assets/Audio/Boss_Laser_.wav" id="15_du7po"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jys87"]
 
 [sub_resource type="Animation" id="Animation_siark"]
 resource_name = "Idle"
+length = 0.40001
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -26,10 +29,26 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_6ft48"]
+resource_name = "IntoGround"
+length = 1.90001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 78, 79]
 }
 
 [sub_resource type="Animation" id="Animation_bvny4"]
@@ -93,6 +112,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_2o04d"]
 resource_name = "SpikeAttack"
@@ -109,8 +152,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_oupat"]
-resource_name = "follow"
+[sub_resource type="Animation" id="Animation_03xo1"]
+resource_name = "armor_buff"
+length = 1.20001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -118,14 +162,78 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 105, 106]
+}
+
+[sub_resource type="Animation" id="Animation_ccxv6"]
+resource_name = "boss_slained"
+length = 2.00001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Boss_Ui_Elements/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 1.7, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ckn4a"]
+resource_name = "death"
+length = 3.00001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]
+}
+
+[sub_resource type="Animation" id="Animation_oupat"]
+resource_name = "follow"
+length = 0.40001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
 }
 
 [sub_resource type="Animation" id="Animation_w2ckh"]
 resource_name = "glowing"
+length = 1.20001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,10 +241,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89]
 }
 
 [sub_resource type="Animation" id="Animation_aqu42"]
@@ -204,6 +312,44 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false, false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprite2D:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571428, 0.714285, 0.857142, 0.999999, 1.14286, 1.28571, 1.71428, 1.85714),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 57, 58]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Pivot/Sprite2D:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.285714, 1.71428, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio/LaserBeamAudio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.555673),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_46dlw"]
 resource_name = "meleeAttack"
@@ -220,68 +366,10 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_ckn4a"]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_ccxv6"]
-resource_name = "boss_slained"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Boss_Ui_Elements/Label:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.9),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_03xo1"]
-resource_name = "armor_buff"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r03fe"]
 _data = {
 "Idle": SubResource("Animation_siark"),
+"IntoGround": SubResource("Animation_6ft48"),
 "RESET": SubResource("Animation_bvny4"),
 "SpikeAttack": SubResource("Animation_2o04d"),
 "armor_buff": SubResource("Animation_03xo1"),
@@ -313,14 +401,17 @@ script = ExtResource("1_28lb1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-2, -133)
-texture = ExtResource("1_gllbq")
+texture = ExtResource("2_kodxt")
 flip_h = true
+hframes = 16
+vframes = 7
 
 [node name="Pivot" type="Node2D" parent="."]
-position = Vector2(-15, -197)
+position = Vector2(-24, -194)
 
 [node name="Sprite2D" type="Sprite2D" parent="Pivot"]
-position = Vector2(116, 21)
+modulate = Color(1, 1, 1, 0)
+position = Vector2(116, 20)
 scale = Vector2(1.205, 1.205)
 texture = ExtResource("2_6i5bb")
 hframes = 14
@@ -396,6 +487,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player Detection"]
+visible = false
 position = Vector2(-59, 13)
 shape = SubResource("CircleShape2D_dqseo")
 
@@ -436,6 +528,12 @@ text = "Debug"
 
 [node name="SpikeShoot_Area" type="Marker2D" parent="."]
 position = Vector2(-21, -200)
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="LaserBeamAudio" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_du7po")
+volume_db = -5.5
 
 [connection signal="body_entered" from="Pivot/laser_player_detection" to="." method="_on_laser_player_detection_body_entered"]
 [connection signal="body_entered" from="player Detection" to="FiniteStateMachine/Idle" method="_on_player_detection_body_entered"]

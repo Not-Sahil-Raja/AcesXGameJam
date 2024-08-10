@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://csc71tjsf500w"]
+[gd_scene load_steps=47 format=3 uid="uid://csc71tjsf500w"]
 
 [ext_resource type="PackedScene" uid="uid://v34kfwvlifqx" path="res://Scenes/player.tscn" id="1_ctm7b"]
 [ext_resource type="Script" path="res://Scripts/Level/Martian_canyon.gd" id="1_qga4b"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://1yscbropo57t" path="res://Assets/DataLogScreen.png" id="20_mmotp"]
 [ext_resource type="FontFile" uid="uid://cnaury175fy8e" path="res://Pixel_fonts/Beanstalk.ttf" id="21_eo836"]
 [ext_resource type="FontFile" uid="uid://bx5g4uykjxytc" path="res://Pixel_fonts/MonstaMono.ttf" id="22_agbk4"]
+[ext_resource type="AudioStream" uid="uid://cb60oy1ce0feg" path="res://Assets/Audio/MRR_II.wav" id="25_lljie"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v61gl"]
 load_path = "res://.godot/imported/Canyon_bg.png-166cda0a4f4549ecab0c8c33bc587d0f.ctex"
@@ -1176,6 +1177,58 @@ _data = {
 "RESET": SubResource("Animation_g0isc")
 }
 
+[sub_resource type="Animation" id="Animation_hqntc"]
+resource_name = "DataLogHide"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/ScrollContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BGRect:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.9, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_68r54"]
 resource_name = "DataLogReveal"
 tracks/0/type = "value"
@@ -1264,58 +1317,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_hqntc"]
-resource_name = "DataLogHide"
-length = 1.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("MarginContainer/ScrollContainer:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1e-05)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../BGRect:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.9, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_c3hq6"]
@@ -1724,6 +1725,9 @@ grow_vertical = 0
 pivot_offset = Vector2(25, 11)
 theme_override_fonts/font = ExtResource("22_agbk4")
 text = "Close"
+
+[node name="RoverMRRSound" type="AudioStreamPlayer" parent="UiItems/Control/PCB/DataLog_Screen"]
+stream = ExtResource("25_lljie")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UiItems/Control/PCB/DataLog_Screen"]
 libraries = {

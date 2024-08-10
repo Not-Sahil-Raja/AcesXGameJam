@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://v34kfwvlifqx"]
+[gd_scene load_steps=117 format=3 uid="uid://v34kfwvlifqx"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_j0gqn"]
 [ext_resource type="Resource" uid="uid://bq0ve57ib3vnm" path="res://Inventory/playerInventory.tres" id="2_id1rc"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bdshajm1smhpm" path="res://Char/MC_SpaceSuit_Front.png" id="9_ootaa"]
 [ext_resource type="Texture2D" uid="uid://0tnu8j1gx3yb" path="res://Char/MC_SpaceSuit_Idle_Front.png" id="10_ff0g5"]
 [ext_resource type="FontFile" uid="uid://7f31858l617j" path="res://Pixel_fonts/BitCasual.ttf" id="14_u7h1s"]
+[ext_resource type="AudioStream" uid="uid://22vmu5abqan1" path="res://Assets/Audio/laser-gun.wav" id="15_7xx2e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t1yhc"]
 size = Vector2(15, 56)
@@ -899,5 +900,10 @@ text = "You Died !"
 libraries = {
 "": SubResource("AnimationLibrary_4rn46")
 }
+
+[node name="Shooting_Music_player" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_7xx2e")
+volume_db = -20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="player_hurtbox" to="." method="_on_player_hurtbox_area_entered"]

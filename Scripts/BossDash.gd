@@ -4,8 +4,11 @@ var can_transition: bool = false
 
 func enter():
 	super.enter()
-	anim_player.play("glowing")
+	anim_player.play("IntoGround")
 	await dash()
+	await anim_player.animation_finished
+	anim_player.play("glowing")
+	await anim_player.animation_finished
 	can_transition= true
 
 func dash():

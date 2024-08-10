@@ -9,6 +9,7 @@ var PrevRoverInteractNum:int =0
 @onready var Data_anim_player = $UiItems/Control/PCB/DataLog_Screen/AnimationPlayer
 @onready var pcb_anim_player = $UiItems/Control/PCB/PCB_Connectors/PCB_AnimationPlayer
 @onready var blocking_collision = $BlockingCollision
+@onready var rover_mrr_sound = $UiItems/Control/PCB/DataLog_Screen/RoverMRRSound
 
 var battery: bool = false
 var prevButton:String
@@ -61,9 +62,14 @@ func CheckConnection(ButtonVal:String):
 			pcb_connectors.queue_free()
 			data_log_screen.visible=true
 			Data_anim_player.play("DataLogReveal")
+			await Data_anim_player.animation_finished
+			rover_mrr_sound.play()
 
 
 func _on_close_button_pressed():
 	Data_anim_player.play("DataLogHide")
 	obj_text.queue_free()
 	blocking_collision.queue_free()
+	if rover_mrr_sound.playing:
+		rover_mrr_sound.stop()
+	

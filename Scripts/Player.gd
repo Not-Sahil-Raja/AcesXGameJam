@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var player_torch_light = $Player_Torch_light
 @onready var ui_elements = $UIElements
 @onready var ui_anim_player = $Ui_anim_player
+@onready var shooting_music_player = $Shooting_Music_player
 
 @export var CAMERA_ZOOM:Vector2 = Vector2( 1.0, 1.0)
 @export var Bullet : PackedScene
@@ -166,6 +167,8 @@ func shoot()->void:
 	bullet_instance.direction = direction
 	bullet_instance.global_position = muzzle.global_position
 	get_parent().add_child(bullet_instance)
+	shooting_music_player.play()
+	
 
 func player_muzzle_position():
 	if direction > 0:
