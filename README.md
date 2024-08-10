@@ -34,7 +34,7 @@ Story: After a crash landing on Mars, Arjun discovers the energy core of his shi
 
  #### credits
  - Character animations and Sound Effects are done by Avirup Ray
- - Scenes are done by Spandan Moyra
+ - Scenes & all the art are done by Spandan Moyra
  - Coding and game logic is done by MD sahil Raja (myself)
  - Game design and game icons are done by Roushan poddar
 
